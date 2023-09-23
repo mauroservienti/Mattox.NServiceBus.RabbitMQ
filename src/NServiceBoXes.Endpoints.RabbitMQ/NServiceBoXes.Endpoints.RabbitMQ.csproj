@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <Authors>Mauro Servienti</Authors>
+        <Description>NServiceBoXes Endpoints for RabbitMQ</Description>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageIcon>icon.png</PackageIcon>
+        <PackageTags>NServiceBus NServiceBoXes Endpoints RabbitMQ</PackageTags>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <NoWarn>$(NoWarn);NU5105</NoWarn>
+        <PackageOutputPath>..\..\nugets</PackageOutputPath>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="..\..\assets\icon.png" Pack="true" PackagePath="\" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="MinVer" Version="4.3.0">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="NServiceBoXes.Endpoints" Version="0.0.2-alpha.3" />
+      <PackageReference Include="NServiceBus.RabbitMQ" Version="[8.0.3, 9.0.0)" />
+    </ItemGroup>
+
+
+</Project>
