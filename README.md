@@ -1,10 +1,7 @@
-# Repository template for code repositories
+# NServiceBoXes.Endpoints.RabbitMQ
 
-This template contains the following:
+<img src="assets/icon.png" width="100" />
 
-- Default `.editorconfig` and `.gitignore` for .NET projects
-- Dependabot GitHub Action to enable auto-merge for Dependabot PRs
-- [MarkdownSnippets](https://github.com/SimonCropp/MarkdownSnippets) GitHub Action
-- An issue template to complete the repository configuration once the new repository has been generated
-- CI GitHub Actions to build, run tests, and push tags to Feedz.io
-- The included sample project defines item groups to produce NuGet packages
+---
+
+Icon — [Box by Angriawan Ditya Zulkarnain](https://thenounproject.com/icon/box-1298424/) from [Noun Project](https://thenounproject.com/browse/icons/term/box/) (CC BY 3.0)
