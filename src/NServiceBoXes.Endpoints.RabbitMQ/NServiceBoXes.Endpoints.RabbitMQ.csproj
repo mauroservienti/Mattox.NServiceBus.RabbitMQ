@@ -35,7 +35,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="NServiceBoXes.Endpoints" Version="0.0.2" />
+      <PackageReference Include="NServiceBoXes.Endpoints" Version="0.0.3" />
       <PackageReference Include="NServiceBus.RabbitMQ" Version="[8.0.3, 9.0.0)" />
     </ItemGroup>
 
