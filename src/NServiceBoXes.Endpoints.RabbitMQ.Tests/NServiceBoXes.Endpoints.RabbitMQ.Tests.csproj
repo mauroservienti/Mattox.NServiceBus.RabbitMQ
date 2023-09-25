@@ -14,7 +14,7 @@
     </ItemGroup>
     
     <ItemGroup Label="local runtime dependencies">
-        <PackageReference Include="NServiceBoXes.Endpoints" Version="0.0.2" />
+        <PackageReference Include="NServiceBoXes.Endpoints" Version="0.0.3" />
         <PackageReference Include="NServiceBus.AmazonSQS" Version="6.1.1" />
     </ItemGroup>
 
