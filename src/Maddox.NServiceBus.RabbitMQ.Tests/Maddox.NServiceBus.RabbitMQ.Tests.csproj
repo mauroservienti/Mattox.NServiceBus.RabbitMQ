@@ -14,8 +14,8 @@
     </ItemGroup>
     
     <ItemGroup Label="local runtime dependencies">
-        <PackageReference Include="NServiceBoXes.Endpoints" Version="0.0.3" />
-        <PackageReference Include="NServiceBus.AmazonSQS" Version="6.2.0" />
+        <PackageReference Include="Maddox.NServiceBus" Version="0.0.6" />
+        <PackageReference Include="NServiceBus.RabbitMQ" Version="8.0.3" />
     </ItemGroup>
 
     <ItemGroup>
@@ -32,7 +32,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\NServiceBoXes.Endpoints.RabbitMQ\NServiceBoXes.Endpoints.RabbitMQ.csproj" />
+      <ProjectReference Include="..\Maddox.NServiceBus.RabbitMQ\Maddox.NServiceBus.RabbitMQ.csproj" />
     </ItemGroup>
 
 </Project>
