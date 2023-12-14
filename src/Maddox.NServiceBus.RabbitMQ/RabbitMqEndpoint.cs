@@ -1,46 +1,44 @@
 ﻿using Microsoft.Extensions.Configuration;
 using NServiceBus;
 
-namespace NServiceBoXes.Endpoints.RabbitMQ;
+namespace Maddox.NServiceBus.RabbitMQ;
 
 public class RabbitMqEndpoint : NServiceBusEndpoint<RabbitMQTransport>
 {
-    const string transportConfigurationSectionKey = "NServiceBus:EndpointConfiguration:Transport";
-    readonly RoutingTopology _routingTopology;
-    readonly string _connectionString;
+    private readonly string? _userDefinedConnectionString;
+    private readonly RoutingTopology? _userDefinedRoutingTopology;
 
     public RabbitMqEndpoint(IConfiguration configuration)
-        : base(GetEndpointNameFromConfigurationOrThrow(configuration), configuration)
+        : base(configuration)
     {
-        _routingTopology = GetRoutingTopologyFromConfigurationOrDefault(configuration);
-        _connectionString = GetConnectionStringFromConfigurationOrThrow(configuration);
+        
     }
 
     public RabbitMqEndpoint(string endpointName, RoutingTopology? routingTopology = null, string? connectionString = null, IConfiguration? configuration = null)
         : base(endpointName, configuration)
     {
-        _connectionString = connectionString ?? GetConnectionStringFromConfigurationOrThrow(configuration);
-        _routingTopology = routingTopology ?? GetRoutingTopologyFromConfigurationOrDefault(configuration);
+        _userDefinedConnectionString = connectionString;
+        _userDefinedRoutingTopology = routingTopology;
     }
 
-    protected override RabbitMQTransport CreateTransport(IConfigurationSection? endpointConfigurationSection)
+    protected override RabbitMQTransport CreateTransport(IConfigurationSection? transportConfigurationSection)
     {
+        var routingTopology = _userDefinedRoutingTopology ?? GetRoutingTopologyFromConfigurationOrDefault(transportConfigurationSection);
+        var connectionString = _userDefinedConnectionString ?? GetConnectionStringFromConfigurationOrThrow(transportConfigurationSection);
+        
         var transport = new RabbitMQTransport(
-            _routingTopology, 
-            _connectionString);
+            routingTopology, 
+            connectionString);
 
-        if (endpointConfigurationSection?.GetSection("Transport") is { } transportConfigurationSection)
-        {
-            // TODO: RabbitMQ transport customizations from configuration section
-        }
+        ApplyCommonTransportSettings(transportConfigurationSection, transport);
+        
+        // TODO: RabbitMQ transport customizations from configuration section
         
         return transport;
     }
 
-    static RoutingTopology GetRoutingTopologyFromConfigurationOrDefault(IConfiguration? configuration)
+    static RoutingTopology GetRoutingTopologyFromConfigurationOrDefault(IConfigurationSection? transportConfigurationSection)
     {
-        var transportConfigurationSection = configuration?.GetSection(transportConfigurationSectionKey);
-        
         var queueType = transportConfigurationSection?["QueueType"] switch
         {
             "Classic" => QueueType.Classic,
@@ -58,18 +56,17 @@ public class RabbitMqEndpoint : NServiceBusEndpoint<RabbitMQTransport>
         return routingTopology;
     }
 
-    static string GetConnectionStringFromConfigurationOrThrow(IConfiguration? configuration)
+    static string GetConnectionStringFromConfigurationOrThrow(IConfigurationSection? transportConfigurationSection)
     {
         const string connectionStringConfigurationSectionValue = "NServiceBus:EndpointConfiguration:Transport:ConnectionString";
-        if (configuration == null)
+        if (transportConfigurationSection == null)
         {
-            throw new ArgumentNullException(
-            nameof(configuration), 
+            throw new ArgumentException( 
             "The endpoint requires a connection string. Either pass it as a constructor parameter or set the " +
             $"it in the configuration using the {connectionStringConfigurationSectionValue} configuration section value.");
         }
 
-        return configuration.GetSection(transportConfigurationSectionKey)["ConnectionString"]
+        return transportConfigurationSection["ConnectionString"]
                ?? throw new ArgumentException(
                    "ConnectionString cannot be null. Make sure the " +
                    $"{connectionStringConfigurationSectionValue} configuration section is set.");
