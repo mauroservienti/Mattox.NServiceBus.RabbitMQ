@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using NServiceBus;
 
-namespace Maddox.NServiceBus.RabbitMQ;
+namespace Mattox.NServiceBus.RabbitMQ;
 
 public class RabbitMqEndpoint : NServiceBusEndpoint<RabbitMQTransport>
 {

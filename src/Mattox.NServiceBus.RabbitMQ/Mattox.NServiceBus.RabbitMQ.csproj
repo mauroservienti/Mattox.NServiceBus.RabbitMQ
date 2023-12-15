@@ -35,7 +35,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Maddox.NServiceBus" Version="0.0.6" />
+      <PackageReference Include="Mattox.NServiceBus" Version="0.0.7" />
       <PackageReference Include="NServiceBus.RabbitMQ" Version="[8.0.3, 9.0.0)" />
     </ItemGroup>
 
