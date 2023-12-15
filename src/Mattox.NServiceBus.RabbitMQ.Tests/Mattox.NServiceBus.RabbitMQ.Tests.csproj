@@ -14,7 +14,7 @@
     </ItemGroup>
     
     <ItemGroup Label="local runtime dependencies">
-        <PackageReference Include="Mattox.NServiceBus" Version="0.0.7•" />
+        <PackageReference Include="Mattox.NServiceBus" Version="0.0.7" />
         <PackageReference Include="NServiceBus.RabbitMQ" Version="8.0.3" />
     </ItemGroup>
 
