@@ -1,7 +1,7 @@
 using NServiceBus;
 using NServiceBus.Configuration.AdvancedExtensibility;
 
-namespace Maddox.NServiceBus.RabbitMQ.Tests;
+namespace Mattox.NServiceBus.RabbitMQ.Tests;
 
 public class RabbitMqEndpointTests
 {

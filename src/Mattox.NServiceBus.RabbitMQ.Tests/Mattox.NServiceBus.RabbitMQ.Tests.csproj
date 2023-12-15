@@ -14,7 +14,7 @@
     </ItemGroup>
     
     <ItemGroup Label="local runtime dependencies">
-        <PackageReference Include="Maddox.NServiceBus" Version="0.0.6" />
+        <PackageReference Include="Mattox.NServiceBus" Version="0.0.7•" />
         <PackageReference Include="NServiceBus.RabbitMQ" Version="8.0.3" />
     </ItemGroup>
 
@@ -32,7 +32,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Maddox.NServiceBus.RabbitMQ\Maddox.NServiceBus.RabbitMQ.csproj" />
+      <ProjectReference Include="..\Mattox.NServiceBus.RabbitMQ\Mattox.NServiceBus.RabbitMQ.csproj" />
     </ItemGroup>
 
 </Project>
