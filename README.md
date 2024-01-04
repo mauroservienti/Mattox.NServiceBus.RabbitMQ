@@ -25,7 +25,7 @@ The endpoint will retrieve values from the `IConfiguration` object instance.
 
 ## Supported endpoints
 
-For more information on all the supported endpoints, refer to the [NServiceBoXes.Endpoints](https://github.com/mauroservienti/NServiceBoXes.Endpoints#supported-endpoints) repository.
+For more information on all the supported endpoints, refer to the [Mattox.NServiceBus](https://github.com/mauroservienti/Mattox.NServiceBus#supported-endpoints) repository.
 
 ## How to get it
 
